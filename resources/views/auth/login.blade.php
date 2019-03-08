@@ -4,6 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if(session('deletarErro'))
+                <div class="alert alert-danger"><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Erro!</strong>
+                     {{ session('deletarErro') }}
+                </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 

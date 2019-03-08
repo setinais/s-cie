@@ -21,7 +21,7 @@ try {
  */
 
 window.axios = require('axios');
-
+window.axios.defaults.baseURL = "http://localhost/s-cie/public";
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

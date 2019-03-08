@@ -21,6 +21,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->status === 0){
+            Auth::logout();
+            return redirect('/login')->with('deletarErro', 'Usuario Bloqueado!');
+        }
         $user = Auth::user();
         $rota = 'login';
 
