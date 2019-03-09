@@ -23,3 +23,7 @@ Route::namespace('Admin')->group(function(){
     Route::get('/admin/getinstituicao', 'InstituicaoController@getInstituicao');
     Route::get('/admin/getdados', 'HomeController@getDados');
 });
+
+Route::namespace('Entitie')->group(function(){
+    Route::get('/entitie/getdados', 'HomeController@getDados');
+});
