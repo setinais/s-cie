@@ -2585,30 +2585,21 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   /*
    * The component's data.
    */
   data: function data() {
     return {
-      data: {
-        alunos: 0
+      alunos: {
+        id: '',
+        name: '',
+        email: '',
+        status: '',
+        sexo: '',
+        matricula: '',
+        curso: '',
+        instituicao: ''
       }
     };
   },
@@ -2633,9 +2624,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     prepareComponent: function prepareComponent() {
       var _this = this;
 
-      axios.get('/api/entitie/getdados').then(function (response) {
+      axios.get('/api/entitie/getalunos').then(function (response) {
         console.log(response.data);
-        _this.data = response.data;
+        _this.alunos = response.data;
       }).catch(function (error) {
         if (_typeof(error.response.data) === 'object') {
           form.errors = _.flatten(_.toArray(error.response.data.errors));
@@ -39557,146 +39548,84 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12 col-lg-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("table", { staticClass: "table table-striped" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.alunos, function(aluno, index) {
+                return _c("tr", [
+                  _c("th", { attrs: { scope: "row" } }, [
+                    _vm._v(_vm._s(index + 1))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(aluno.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(aluno.email))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(aluno.matricula))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(aluno.curso))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(aluno.sexo))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(aluno.status))]),
+                  _vm._v(" "),
+                  _c("td")
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("form", [
-            _c("div", { staticClass: "form-row" }, [
-              _c("div", { staticClass: "form-group col-md-6" }, [
-                _c("label", { attrs: { for: "inputEmail4" } }, [
-                  _vm._v("Email")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "email",
-                    id: "inputEmail4",
-                    placeholder: "Email"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group col-md-6" }, [
-                _c("label", { attrs: { for: "inputPassword4" } }, [
-                  _vm._v("Password")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "password",
-                    id: "inputPassword4",
-                    placeholder: "Password"
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "inputAddress" } }, [
-                _vm._v("Address")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "inputAddress",
-                  placeholder: "1234 Main St"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "inputAddress2" } }, [
-                _vm._v("Address 2")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "inputAddress2",
-                  placeholder: "Apartment, studio, or floor"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-row" }, [
-              _c("div", { staticClass: "form-group col-md-6" }, [
-                _c("label", { attrs: { for: "inputCity" } }, [_vm._v("City")]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "inputCity" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group col-md-4" }, [
-                _c("label", { attrs: { for: "inputState" } }, [
-                  _vm._v("State")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  { staticClass: "form-control", attrs: { id: "inputState" } },
-                  [
-                    _c("option", { attrs: { selected: "" } }, [
-                      _vm._v("Choose...")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", [_vm._v("...")])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group col-md-2" }, [
-                _c("label", { attrs: { for: "inputZip" } }, [_vm._v("Zip")]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "inputZip" }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("div", { staticClass: "form-check" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: { type: "checkbox", id: "gridCheck" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "gridCheck" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                      Check me out\n                    "
-                    )
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Sign in")]
-            )
-          ])
-        ])
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("Gerenciar Alunos "),
+      _c(
+        "a",
+        {
+          staticClass: "float-right btn btn-success",
+          attrs: { href: "/s-cie/public/entitie/cadastraraluno" }
+        },
+        [_vm._v("+ Novo Aluno")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nome")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("E-mail")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Matricula")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Curso")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Sexo")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Ações")])
       ])
     ])
   }

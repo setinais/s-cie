@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('rg');
             $table->string('cpf');
             $table->integer('institution_id');
+            $table->integer('entitie_id');
             $table->string('cidade');
             $table->string('estado');
             $table->string('curso');
@@ -29,8 +30,11 @@ class CreateStudentsTable extends Migration
             $table->enum('sexo',['Masculino', 'Feminino']);
             $table->string('telefone');
             $table->string('email');
-            $table->string('foto_3x4');
+            $table->string('foto_3x4')->nullable();
             $table->string('codigo_uso');
+            $table->date('validade');
+            $table->date('data_emissao');
+            $table->enum('status',['Pendente', 'Aprovado', 'Emitida', 'Cancelada', 'Rejeitada', 'Em Analise'])->default('Pendente');
             $table->timestamps();
             $table->softDeletes();
         });

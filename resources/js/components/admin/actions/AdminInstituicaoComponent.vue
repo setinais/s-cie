@@ -21,7 +21,7 @@
                               <th scope="row">{{ (index + 1) }}</th>
                               <td>{{ instituicao.name }}</td>
                               <td>{{ instituicao.email }}</td>
-                              <td>{{ instituicao.phone }}</span></td>
+                              <td>{{ instituicao.phone }}</td>
                               <td>{{ instituicao.city }}</td>
                             </tr>
                           </tbody>

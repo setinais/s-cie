@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -36,4 +38,15 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function administrator(){
+        return $this->hasOne('App\Models\Administrator');
+    }
+    public function dce(){
+        return $this->hasOne('App\Models\Dce');
+    }
+    public function entitie(){
+        return $this->hasOne('App\Models\Entitie');
+    }
+
 }

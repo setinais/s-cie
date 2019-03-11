@@ -20,6 +20,22 @@ class DatabaseSeeder extends Seeder
             'role' => 'Admin',
             'email_verified_at' => now(),
     	]);
+    	\App\Models\User::create([
+    		'name' => 'entitie',
+            'email' => 'entitie@e.com',
+            'password' => Hash::make('admin'),
+            'status' => 1,
+            'role' => 'Entidade',
+            'email_verified_at' => now(),
+    	]);
+    	\App\Models\User::create([
+    		'name' => 'dce',
+            'email' => 'dce@d.com',
+            'password' => Hash::make('admin'),
+            'status' => 1,
+            'role' => 'DCE',
+            'email_verified_at' => now(),
+    	]);
 
          \App\Models\Institution::create([ // ID:1 -PARAÍSO - TO
 

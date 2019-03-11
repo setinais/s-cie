@@ -31,6 +31,9 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::namespace('Entitie')->group(function(){
         Route::get('/entitie', 'HomeController@index')->name('entitiehome');
+        Route::get('/entitie/cadastraraluno', 'AlunoController@cadastroAluno')->name('entitiecadastroaluno');
     });
 
 });
+
+Route::get('/tests', 'Entitie\AlunoController@getAlunos');

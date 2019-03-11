@@ -26,4 +26,5 @@ Route::namespace('Admin')->group(function(){
 
 Route::namespace('Entitie')->group(function(){
     Route::get('/entitie/getdados', 'HomeController@getDados');
+    Route::get('/entitie/getalunos', 'AlunoController@getAlunos');
 });
