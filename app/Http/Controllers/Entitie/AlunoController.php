@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use App\Models\Institution;
+use Illuminate\Support\Facades\Validator;
 
 class AlunoController extends Controller
 {
@@ -30,9 +31,13 @@ class AlunoController extends Controller
         return $dados;
     }
 
+    public function showCadastro(){
+        return view('entitie.cadastroaluno');
+    }
     public function cadastroAluno(Request $request){
-        if($request->is()){
-            $validator = Validator::make($request->all(), [
+        var_dump($_REQUEST);
+        return view('entitie.cadastroaluno');
+        $validator = Validator::make($request->all(), [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'rg' => ['required', 'string', 'min:8', 'confirmed'],
@@ -47,9 +52,27 @@ class AlunoController extends Controller
                 'curso' => ['required', 'string', 'min:8', 'confirmed'],
                 'escolaridade' => ['required', 'string', 'min:8', 'confirmed'],
             ]);
+        if ($validator->fails()) {
+            return redirect('entitie/cadastraraluno')
+                ->withErrors($validator)
+                ->withInput();
         }else{
+            $aluno = new Student();
+            $aluno->name = $request->all()->name;
+            $aluno->email = $request->all()->email;
+            $aluno->rg = $request->all()->rg;
+            $aluno->cpf = $request->all()->cpf;
+            $aluno->cidade = $request->all()->cidade;
+            $aluno->estado = $request->all()->estado;
+            $aluno->endereco = $request->all()->endereco;
+            $aluno->estado_civil = $request->all()->estado_civil;
+            $aluno->sexo = $request->all()->sexo;
+            $aluno->telefone = $request->all()->telefone;
+            $aluno->matricula = $request->all()->matricula;
+            $aluno->curso = $request->all()->curso;
+            $aluno->escolaridade = $request->all()->escolaridade;
 
+            return redirect('entitie/cadastraraluno')->whith('msg', 'Aluno cadastrado com sucesso!');
         }
-        return view('entitie.cadastroaluno')->withErrors('errors', $request->);
     }
 }

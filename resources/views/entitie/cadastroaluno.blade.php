@@ -4,7 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <form>
+            @if(session('msg'))
+                <div class="alert alert-success"><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong>Erro!</strong>
+                    {{ session('msg') }}
+                </div>
+            @endif
+            <form method="post" action="{{ route('entitiecadastroaluno') }}">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="id_email">Email</label>
@@ -69,7 +75,7 @@
                     </div>
                 </div>
 
-                <a href="{{route('home')}}" class="btn btn-danger">Voltar</a>
+                <a href="{{ route('home') }}" class="btn btn-danger">Voltar</a>
                 <button type="submit" class="btn btn-success float-right">Salvar</button>
             </form>
             <!-- /.col -->
